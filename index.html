@@ -1,0 +1,344 @@
+import React, { useState } from 'react';
+import { Menu, X, Github, Linkedin, Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
+
+export default function Portfolio() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    element?.scrollIntoView({ behavior: 'smooth' });
+    setIsMenuOpen(false);
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+      {/* Navigation */}
+      <nav className="fixed w-full bg-slate-900/80 backdrop-blur-md z-50 border-b border-slate-700">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              PK
+            </div>
+            
+            {/* Desktop Menu */}
+            <div className="hidden md:flex gap-8">
+              {['home', 'about', 'skills', 'experience', 'contact'].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => scrollToSection(item)}
+                  className="capitalize text-sm font-medium hover:text-blue-400 transition-colors"
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden"
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+
+          {/* Mobile Menu */}
+          {isMenuOpen && (
+            <div className="md:hidden pb-4 space-y-2">
+              {['home', 'about', 'skills', 'experience', 'contact'].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => scrollToSection(item)}
+                  className="block w-full text-left capitalize text-sm font-medium hover:text-blue-400 transition-colors py-2"
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section id="home" className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center space-y-6">
+            <div className="inline-block">
+              <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-blue-400 to-cyan-400 p-1">
+                <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-5xl font-bold bg-gradient-to-br from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                  PK
+                </div>
+              </div>
+            </div>
+            <div>
+              <h1 className="text-5xl md:text-7xl font-bold mb-4">
+                Praveen Kumar
+              </h1>
+              <p className="text-xl md:text-2xl text-cyan-400 font-semibold">
+                MuleSoft Integration Architect & Developer
+              </p>
+            </div>
+            <p className="text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+              3x MuleSoft Certified | 1x Salesforce Certified | Specializing in API-led integration solutions and digital transformation
+            </p>
+            <div className="flex justify-center gap-4 pt-6">
+              <a href="mailto:praveen.gudise97@gmail.com" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-semibold transition-colors">
+                <Mail size={20} /> Get in Touch
+              </a>
+              <a href="https://www.linkedin.com/in/praveenkumar-gudisa-046782168" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-blue-400 text-blue-400 hover:bg-blue-400/10 px-6 py-3 rounded-lg font-semibold transition-colors">
+                <Linkedin size={20} /> LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800/50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 text-center">About Me</h2>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6 text-slate-300 leading-relaxed">
+              <p>
+                I'm a certified MuleSoft Integration Architect with extensive experience in designing and delivering robust, scalable, and secure API-led integration solutions that connect enterprise systems and drive digital transformation.
+              </p>
+              <p>
+                My expertise covers the complete SDLC using Anypoint Platform with proficiency in developing APIs using RAML, complex data manipulation with DataWeave (DWL 2.0), Batch Processing, and MUnit Framework testing.
+              </p>
+              <p>
+                I bring strong practical experience in modernization including Mule 3 to Mule 4 migration, CI/CD pipeline integration with Jenkins, Maven, and GitHub, as well as B2B integrations using EDI standards (X12, EDIFACT).
+              </p>
+            </div>
+            <div className="space-y-4">
+              <div className="bg-slate-700/50 rounded-lg p-6 border border-slate-600">
+                <h3 className="text-blue-400 font-semibold mb-2">Current Role</h3>
+                <p className="text-lg">MuleSoft Consultant at Capgemini</p>
+                <p className="text-sm text-slate-400">April 2025 - Present</p>
+              </div>
+              <div className="bg-slate-700/50 rounded-lg p-6 border border-slate-600">
+                <h3 className="text-blue-400 font-semibold mb-2">Location</h3>
+                <p className="flex items-center gap-2">
+                  <MapPin size={20} /> Hyderabad, India
+                </p>
+              </div>
+              <div className="bg-slate-700/50 rounded-lg p-6 border border-slate-600">
+                <h3 className="text-blue-400 font-semibold mb-2">Contact</h3>
+                <p className="flex items-center gap-2 mb-2">
+                  <Phone size={20} /> 8106076978
+                </p>
+                <p className="flex items-center gap-2">
+                  <Mail size={20} /> praveen.gudise97@gmail.com
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 text-center">Skills & Expertise</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-slate-800/50 rounded-lg p-8 border border-slate-700 hover:border-blue-400 transition-colors">
+              <h3 className="text-2xl font-bold text-blue-400 mb-6">Integration</h3>
+              <ul className="space-y-3 text-slate-300">
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                  MuleSoft Anypoint Platform
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                  API Development (REST & SOAP)
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                  DataWeave (DWL 2.0)
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                  RAML Specification
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                  Batch Processing
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-slate-800/50 rounded-lg p-8 border border-slate-700 hover:border-blue-400 transition-colors">
+              <h3 className="text-2xl font-bold text-blue-400 mb-6">Connectors</h3>
+              <ul className="space-y-3 text-slate-300">
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                  Salesforce
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                  SAP
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                  Database
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                  Azure (Storage & Data Lake)
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                  Twilio & ActiveMQ
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-slate-800/50 rounded-lg p-8 border border-slate-700 hover:border-blue-400 transition-colors">
+              <h3 className="text-2xl font-bold text-blue-400 mb-6">DevOps & Tools</h3>
+              <ul className="space-y-3 text-slate-300">
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                  CI/CD Pipelines
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                  Jenkins & Maven
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                  GitHub
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                  MUnit Testing
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                  JSP & HTML
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800/50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 text-center">Certifications & Achievements</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { title: 'MuleSoft Certified Developer Level 2', icon: '🔷' },
+              { title: 'MuleSoft Certified Developer Level 1', icon: '🔷' },
+              { title: 'MuleSoft Certified Integration Architect', icon: '🔷' },
+              { title: 'Salesforce Certified Administrator (ADM201)', icon: '☁️' },
+              { title: 'Data Science for Engineers', icon: '📊' },
+              { title: 'Programming Foundations: Fundamentals', icon: '💻' },
+            ].map((cert, idx) => (
+              <div key={idx} className="flex items-center gap-4 bg-slate-700/30 rounded-lg p-6 border border-slate-600">
+                <span className="text-3xl">{cert.icon}</span>
+                <p className="font-semibold text-slate-200">{cert.title}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-12 p-8 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 rounded-lg border border-blue-400/30">
+            <p className="text-center text-slate-300">
+              <span className="text-cyan-400 font-bold">3x</span> MuleSoft Certified | 
+              <span className="text-cyan-400 font-bold"> 3x</span> Ranger |
+              <span className="text-cyan-400 font-bold"> 12x</span> Super Badges
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 text-center">Experience</h2>
+          <div className="space-y-8">
+            <div className="bg-slate-800/50 rounded-lg p-8 border border-slate-700 hover:border-blue-400 transition-colors">
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <h3 className="text-2xl font-bold text-blue-400">MuleSoft Consultant</h3>
+                  <p className="text-cyan-400 font-semibold">Capgemini</p>
+                </div>
+                <span className="text-slate-400 text-sm">April 2025 - Present</span>
+              </div>
+              <p className="text-slate-300">Hyderabad</p>
+            </div>
+
+            <div className="bg-slate-800/50 rounded-lg p-8 border border-slate-700 hover:border-blue-400 transition-colors">
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <h3 className="text-2xl font-bold text-blue-400">Software Engineer</h3>
+                  <p className="text-cyan-400 font-semibold">NeuroGaint Systems</p>
+                </div>
+                <span className="text-slate-400 text-sm">Sep 2024 - Apr 2025</span>
+              </div>
+              <p className="text-slate-300">Hyderabad, Telangana, India</p>
+              <p className="text-sm text-slate-400 mt-2">8 months</p>
+            </div>
+
+            <div className="bg-slate-800/50 rounded-lg p-8 border border-slate-700 hover:border-blue-400 transition-colors">
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <h3 className="text-2xl font-bold text-blue-400">Associate Software Engineer</h3>
+                  <p className="text-cyan-400 font-semibold">NeuroGaint Systems</p>
+                </div>
+                <span className="text-slate-400 text-sm">Oct 2021 - Sep 2024</span>
+              </div>
+              <p className="text-slate-300">Hyderabad, Telangana, India</p>
+              <p className="text-sm text-slate-400 mt-2">3 years</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800/50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 text-center">Education</h2>
+          <div className="bg-slate-700/30 rounded-lg p-8 border border-slate-600">
+            <h3 className="text-2xl font-bold text-blue-400 mb-2">Bachelor of Technology (B.Tech)</h3>
+            <p className="text-cyan-400 font-semibold text-lg">Computer Science</p>
+            <p className="text-slate-300 mt-2">Gayatri Vidya Parishad College for Degree and PG Courses</p>
+            <p className="text-slate-400 mt-2">2016 - 2020</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 text-center">Get In Touch</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <a href="mailto:praveen.gudise97@gmail.com" className="bg-slate-800/50 rounded-lg p-8 border border-slate-700 hover:border-blue-400 transition-colors text-center group">
+              <Mail className="w-12 h-12 mx-auto mb-4 text-blue-400 group-hover:text-cyan-400 transition-colors" />
+              <h3 className="text-xl font-bold mb-2">Email</h3>
+              <p className="text-slate-300 break-all hover:text-blue-400">praveen.gudise97@gmail.com</p>
+            </a>
+            
+            <a href="tel:8106076978" className="bg-slate-800/50 rounded-lg p-8 border border-slate-700 hover:border-blue-400 transition-colors text-center group">
+              <Phone className="w-12 h-12 mx-auto mb-4 text-blue-400 group-hover:text-cyan-400 transition-colors" />
+              <h3 className="text-xl font-bold mb-2">Phone</h3>
+              <p className="text-slate-300 hover:text-blue-400">+91 8106076978</p>
+            </a>
+
+            <a href="https://www.linkedin.com/in/praveenkumar-gudisa-046782168" target="_blank" rel="noopener noreferrer" className="bg-slate-800/50 rounded-lg p-8 border border-slate-700 hover:border-blue-400 transition-colors text-center group">
+              <Linkedin className="w-12 h-12 mx-auto mb-4 text-blue-400 group-hover:text-cyan-400 transition-colors" />
+              <h3 className="text-xl font-bold mb-2">LinkedIn</h3>
+              <p className="text-slate-300 text-sm hover:text-blue-400">Connect with me</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-slate-700 py-8 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
+        <div className="max-w-6xl mx-auto text-center text-slate-400">
+          <p>© 2026 Praveen Kumar. All rights reserved.</p>
+          <p className="mt-2 text-sm">Crafted with React & Tailwind CSS</p>
+        </div>
+      </footer>
+    </div>
+  );
+}
